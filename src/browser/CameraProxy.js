@@ -42,7 +42,7 @@ function takePicture (success, error, opts) {
 
 
         var buttonParent = document.createElement('div');
-        buttonParent.className = 'cordova-camera-button';
+        buttonParent.className = 'cordova-camera-button-single';
 
         var input = document.createElement('input');
 
@@ -62,7 +62,8 @@ function takePicture (success, error, opts) {
         input.onchange = function (inputEvent) {
             var reader = new FileReader(); /* eslint no-undef : 0 */
             reader.onload = function (readerEvent) {
-                input.parentNode.removeChild(input);
+//                input.parentNode.removeChild(input);
+                document.body.removeChild(parent);
 
                 var imageData = readerEvent.target.result;
 
