@@ -33,13 +33,13 @@ function takePicture (success, error, opts) {
         var parent = document.createElement('div');
 
         var inputParent = document.createElement('div');
-        inputParent.className = 'cordova-camera-select-input';
+        inputParent.className = 'cordova-camera-input';
         var buttonParent = document.createElement('div');
-        buttonParent.className = 'cordova-camera-select-button';
+        buttonParent.className = 'cordova-camera-button';
 
         parent.style.position = 'relative';
         parent.style.zIndex = HIGHEST_POSSIBLE_Z_INDEX;
-        parent.className = 'cordova-camera-select';
+        parent.className = 'cordova-camera';
 
         inputParent.appendChild(input);
         buttonParent.appendChild(reset);
@@ -81,19 +81,19 @@ function capture (success, errorCallback, opts) {
 
     var parent = document.createElement('div');
     
-    var videoParent = document.createElement('div');
-    videoParent.className = 'cordova-camera-capture-video';
+    var inputParent = document.createElement('div');
+    inputParent.className = 'cordova-camera-input';
 
     var buttonParent = document.createElement('div');
-    buttonParent.className = 'cordova-camera-capture-button';
+    buttonParent.className = 'cordova-camera-button';
 
     parent.style.position = 'relative';
     parent.style.zIndex = HIGHEST_POSSIBLE_Z_INDEX;
-    parent.className = 'cordova-camera-capture';
-    videoParent.appendChild(video);
+    parent.className = 'cordova-camera';
+    inputParent.appendChild(video);
     buttonParent.appendChild(button);
     buttonParent.appendChild(reset);
-    parent.appendChild(videoParent);
+    parent.appendChild(inputParent);
     parent.appendChild(buttonParent);
 
     video.width = targetWidth;
