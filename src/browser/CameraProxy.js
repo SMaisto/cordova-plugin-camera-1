@@ -42,7 +42,7 @@ function takePicture (success, error, opts) {
         parent.className = 'cordova-camera';
 
         inputParent.appendChild(input);
-        buttonParent.appendChild(reset);
+        buttonParent.appendChild(reset1);
         parent.appendChild(inputParent);
         parent.appendChild(buttonParent);
 
@@ -64,6 +64,13 @@ function takePicture (success, error, opts) {
         };
 
         document.body.appendChild(parent);
+
+        reset.onclick = function () {
+
+            document.body.removeChild(parent);
+        }
+    
+
     }
 }
 
