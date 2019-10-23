@@ -60,13 +60,23 @@ function capture (success, errorCallback, opts) {
     var video = document.createElement('video');
     var button = document.createElement('ion-button');
     var reset = document.createElement('ion-button');
+
     var parent = document.createElement('div');
+    
+    var videoParent = document.createElement('div');
+    videoParent.className = 'cordova-camera-capture-video';
+
+    var buttonParent = document.createElement('div');
+    buttonParent.className = 'cordova-camera-capture-button';
+
     parent.style.position = 'relative';
     parent.style.zIndex = HIGHEST_POSSIBLE_Z_INDEX;
-    parent.className = 'cordova-camera-capture1';
-    parent.appendChild(video);
-    parent.appendChild(button);
-    parent.appendChild(reset);
+    parent.className = 'cordova-camera-capture';
+    videoParent.appendChild(video);
+    buttonParent.appendChild(button);
+    buttonParent.appendChild(reset);
+    parent.appendChild(videoParent);
+    parent.appendChild(buttonParent);
 
     video.width = targetWidth;
     video.height = targetHeight;
