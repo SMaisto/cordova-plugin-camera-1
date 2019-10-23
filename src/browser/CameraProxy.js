@@ -59,16 +59,34 @@ function capture (success, errorCallback, opts) {
 
     var video = document.createElement('video');
     var button = document.createElement('ion-button');
+    var reset = document.createElement('ion-button');
     var parent = document.createElement('div');
     parent.style.position = 'relative';
     parent.style.zIndex = HIGHEST_POSSIBLE_Z_INDEX;
     parent.className = 'cordova-camera-capture1';
     parent.appendChild(video);
     parent.appendChild(button);
+    parent.appendChild(reset);
 
     video.width = targetWidth;
     video.height = targetHeight;
-    button.innerHTML = 'Capture!';
+    button.innerHTML = 'Scatta';
+    reset.innerHTML = 'Annulla';
+
+    reset.onclick = function () {
+
+        // stop video stream, remove video and button.
+        // Note that MediaStream.stop() is deprecated as of Chrome 47.
+        if (localMediaStream.stop) {
+            localMediaStream.stop();
+        } else {
+            localMediaStream.getTracks().forEach(function (track) {
+                track.stop();
+            });
+        }
+        parent.parentNode.removeChild(parent);
+
+    }
 
     button.onclick = function () {
         // create a canvas and capture a frame from video stream
