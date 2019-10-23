@@ -25,12 +25,30 @@ function takePicture (success, error, opts) {
     if (opts && opts[2] === 1) {
         capture(success, error, opts);
     } else {
+
+
         var input = document.createElement('input');
-        input.style.position = 'relative';
-        input.style.zIndex = HIGHEST_POSSIBLE_Z_INDEX;
-        input.className = 'cordova-camera-select';
+        var reset = document.createElement('ion-button');
+
+        var parent = document.createElement('div');
+
+        var inputParent = document.createElement('div');
+        inputParent.className = 'cordova-camera-select-input';
+        var buttonParent = document.createElement('div');
+        buttonParent.className = 'cordova-camera-select-button';
+
+        parent.style.position = 'relative';
+        parent.style.zIndex = HIGHEST_POSSIBLE_Z_INDEX;
+        parent.className = 'cordova-camera-select';
+
+        inputParent.appendChild(input);
+        buttonParent.appendChild(reset);
+        parent.appendChild(inputParent);
+        parent.appendChild(buttonParent);
+
         input.type = 'file';
         input.name = 'files[]';
+        reset.innerHTML = 'Annulla';
 
         input.onchange = function (inputEvent) {
             var reader = new FileReader(); /* eslint no-undef : 0 */
@@ -45,7 +63,7 @@ function takePicture (success, error, opts) {
             reader.readAsDataURL(inputEvent.target.files[0]);
         };
 
-        document.body.appendChild(input);
+        document.body.appendChild(parent);
     }
 }
 
