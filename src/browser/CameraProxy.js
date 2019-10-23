@@ -77,10 +77,6 @@ function takePicture (success, error, opts) {
         reset.onclick = function () {
             document.body.removeChild(parent);
         }
-    
-        parent.onclick = function () { 
-            document.body.removeChild(parent);
-        }
 
     }
 }
@@ -127,20 +123,6 @@ function capture (success, errorCallback, opts) {
     reset.innerHTML = 'Annulla';
 
     reset.onclick = function () {
-
-        // stop video stream, remove video and button.
-        // Note that MediaStream.stop() is deprecated as of Chrome 47.
-        if (localMediaStream.stop) {
-            localMediaStream.stop();
-        } else {
-            localMediaStream.getTracks().forEach(function (track) {
-                track.stop();
-            });
-        }
-        parent.parentNode.removeChild(parent);
-
-    }
-    parent.onclick = function () {
 
         // stop video stream, remove video and button.
         // Note that MediaStream.stop() is deprecated as of Chrome 47.
