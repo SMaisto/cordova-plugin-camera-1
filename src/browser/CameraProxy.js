@@ -27,24 +27,33 @@ function takePicture (success, error, opts) {
     } else {
 
 
-        var input = document.createElement('input');
-        var reset = document.createElement('ion-button');
+
 
         var parent = document.createElement('div');
-
-        var inputParent = document.createElement('div');
-        inputParent.className = 'cordova-camera-input';
-        var buttonParent = document.createElement('div');
-        buttonParent.className = 'cordova-camera-button';
-
         parent.style.position = 'relative';
         parent.style.zIndex = HIGHEST_POSSIBLE_Z_INDEX;
         parent.className = 'cordova-camera';
 
+        var boxParent = document.createElement('div');
+        boxParent.className = 'cordova-camera-box';
+
+        var inputParent = document.createElement('div');
+        inputParent.className = 'cordova-camera-input';
+
+
+        var buttonParent = document.createElement('div');
+        buttonParent.className = 'cordova-camera-button';
+
+        var input = document.createElement('input');
+
+        var reset = document.createElement('ion-button');
+
+
         inputParent.appendChild(input);
-        buttonParent.appendChild(reset1);
-        parent.appendChild(inputParent);
-        parent.appendChild(buttonParent);
+        buttonParent.appendChild(reset);
+        boxParent.appendChild(inputParent);
+        boxParent.appendChild(buttonParent);
+        parent.appendChild(boxParent);
 
         input.type = 'file';
         input.name = 'files[]';
@@ -82,26 +91,33 @@ function capture (success, errorCallback, opts) {
     targetWidth = targetWidth === -1 ? 320 : targetWidth;
     targetHeight = targetHeight === -1 ? 240 : targetHeight;
 
-    var video = document.createElement('video');
-    var button = document.createElement('ion-button');
-    var reset = document.createElement('ion-button');
+
 
     var parent = document.createElement('div');
-    
+    parent.style.position = 'relative';
+    parent.style.zIndex = HIGHEST_POSSIBLE_Z_INDEX;
+    parent.className = 'cordova-camera';
+
+    var boxParent = document.createElement('div');
+    boxParent.className = 'cordova-camera-box';
+
+
     var inputParent = document.createElement('div');
     inputParent.className = 'cordova-camera-input';
 
     var buttonParent = document.createElement('div');
     buttonParent.className = 'cordova-camera-button';
 
-    parent.style.position = 'relative';
-    parent.style.zIndex = HIGHEST_POSSIBLE_Z_INDEX;
-    parent.className = 'cordova-camera';
+    var video = document.createElement('video');
+    var button = document.createElement('ion-button');
+    var reset = document.createElement('ion-button');
+
     inputParent.appendChild(video);
     buttonParent.appendChild(button);
     buttonParent.appendChild(reset);
-    parent.appendChild(inputParent);
-    parent.appendChild(buttonParent);
+    boxParent.appendChild(inputParent);
+    boxParent.appendChild(buttonParent);
+    parent.appendChild(boxParent);
 
     video.width = targetWidth;
     video.height = targetHeight;
